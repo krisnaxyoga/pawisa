@@ -4,20 +4,20 @@
         <!-- Button trigger modal -->
         {{ alertbs_form($errors) }}
         <button type="button" class="btn btn-primary btn-md" data-bs-toggle="modal" data-bs-target="#modelIdPlus">
-            <i class="fas fa-plus mr-1"></i> Produk
+            <i class="fas fa-plus mr-1"></i> Agenda Kegiatan
         </button>
         <div class="card card-rounded mt-2">
             <div class="card-header bg-primary text-white">
-                <h5 class="card-title pt-2"> <i class="fas fa-database me-1"></i> Data Produk</h5>
+                <h5 class="card-title pt-2"> <i class="fas fa-database me-1"></i> Data Agenda Kegiatan</h5>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-4 ms-auto">
                         <form method="get" action="">
                             <div class="input-group mb-3">
-                                <input type="text" value="{{$request->get('search')}}" name="search" id="search" class="form-control" placeholder="Cari Produk" aria-describedby="helpId">
+                                <input type="text" value="{{$request->get('search')}}" name="search" id="search" class="form-control" placeholder="Cari Agenda Kegiatan" aria-describedby="helpId">
                                 @if($request->get('search'))
-                                    <a href="{{ route('admin.produk') }}" 
+                                    <a href="{{ route('admin.agenda_kegiatan') }}"
                                         class="input-group-text btn btn-success btn-md">
                                         <i class="fas fa-sync pr-2"></i>Refresh</a>
                                 @endif
@@ -33,7 +33,7 @@
                                 <th>Gambar</th>
                                 <th>Kategori</th>
                                 <th>Nama produk</th>
-                                <th>Harga jual</th>
+                                <th>jumlahview</th>
                                 <th>Tanggal</th>
                                 <th>Aksi</th>
                             </tr>
@@ -43,20 +43,20 @@
                             @forelse($produk as $r)
                             <tr>
                                 <td>{{$no}}</td>
-                                <td><img src="{{url_images('gambar', $r->gambar)}}" class="img-fluid" style="width:80px;"></td>      
-                                <td>{{$r->nama_kategori}}</td>      
-                                <td>{{$r->nama_produk}}</td>    
-                                <td>Rp{{number_format($r->harga_jual)}},-</td>      
-                                <td>{{$r->created_at}}</td> 
+                                <td><img src="{{url_images('gambar', $r->gambar)}}" class="img-fluid" style="width:80px;"></td>
+                                <td>{{$r->nama_kategori}}</td>
+                                <td>{{$r->nama}}</td>
+                                <td>Rp{{number_format($r->jumlahview)}},-</td>
+                                <td>{{$r->created_at}}</td>
                                 <td>
-                                    <a href="javascript:void(0)" data-id="{{ $r->id }}" 
+                                    <a href="javascript:void(0)" data-id="{{ $r->id }}"
                                         class="btn btn-success btn-sm ubah" title="Edit">
-                                        <i class="fa fa-edit"></i>  
-                                    </a>   
-                                    <a href="{{url("admin/produk/delete/$r->id")}}" 
-                                        class="btn btn-danger btn-sm" 
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="{{url("admin/produk/delete/$r->id")}}"
+                                        class="btn btn-danger btn-sm"
                                         onclick="javascript:return confirm(`Data ingin dihapus ?`);" title="Delete">
-                                        <i class="fa fa-times"></i> 
+                                        <i class="fa fa-times"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -82,7 +82,7 @@
                         <h5 class="modal-title">Tambah Produk</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form method="post" action="{{ route('admin.create_produk') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('admin.create_agenda_kegiatan') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="form-group">
@@ -97,23 +97,30 @@
                                 @enderror
                             </div>
                             <div class="form-group mt-3">
-                                <label for="">Nama Produk</label>
-                                <input type="text" class="form-control @error("nama_produk") is-invalid @enderror" required value="{{old("nama_produk")}}" name="nama_produk" id="nama_produk" placeholder="">
-                                @error("nama_produk")
+                                <label for="">Nama kegiatan</label>
+                                <input type="text" class="form-control @error("nama") is-invalid @enderror" required value="{{old("nama")}}" name="nama" id="nama" placeholder="">
+                                @error("nama")
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group mt-3">
-                                <label for="">Deskripsi</label>
-                                <textarea class="form-control @error("deskripsi") is-invalid @enderror" rows="5" required name="deskripsi" id="deskripsi" placeholder="">{{old("deskripsi")}}</textarea>
-                                @error("deskripsi")
+                                <label for="">Jenis kegiatan</label>
+                                <input value="{{old("jenis_kegiatan")}}" class="form-control @error("jenis_kegiatan") is-invalid @enderror" required name="jenis_kegiatan" id="jenis_kegiatan" placeholder="">
+                                @error("jenis_kegiatan")
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group mt-3">
-                                <label for="">Harga jual</label>
-                                <input type="number" class="form-control @error("harga_jual") is-invalid @enderror" required value="{{old("harga_jual")}}" name="harga_jual" id="harga_jual" placeholder="">
-                                @error("harga_jual")
+                                <label for="">Jumlah view</label>
+                                <input type="text" class="form-control @error("jumlahview") is-invalid @enderror" required value="{{old("jumlahview")}}" name="jumlahview" id="jumlahview" placeholder="">
+                                @error("jumlahview")
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="">tanggal kegiatan</label>
+                                <input type="date" class="form-control @error("tglkegiatan") is-invalid @enderror" required value="{{old("tglkegiatan")}}" name="tglkegiatan" id="tglkegiatan" placeholder="">
+                                @error("tglkegiatan")
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -135,9 +142,9 @@
         </div>
     </div>
     <div class="modal fade" id="modelIdEdit" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">        
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" id="edit-content">
-                
+
             </div>
         </div>
     </div>
@@ -149,7 +156,7 @@
         var id = $(this).attr('data-id');
         $('#modelIdEdit').modal('show');
         $.ajax({
-            url: '{{route("admin.edit_produk")}}',
+            url: '{{route("admin.edit_agenda_kegiatan")}}',
             type: "POST",
             data: { "_token": "{{ csrf_token() }}","id" : id},
             timeout:60000,

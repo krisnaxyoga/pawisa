@@ -2,14 +2,18 @@
     <div class="row">
         @foreach($produk as $r)
         <div class="col-sm-3 mb-3 d-none d-lg-block">
-            <div class="card-product">
-                <a href="{{ url('produk/'.$r->id) }}" class="text-produk">
-                    <img src="{{ url_images('gambar', $r->gambar) }}" class="img-fluid w-100">
-                </a>
-                <div class="clearfix mb-3"></div>
-                <h5 class="text-produk">Rp{{number_format($r->harga_jual)}},-</h5>
-                <a href="{{ url('produk/'.$r->id) }}" class="text-produk">{{ $r->nama_produk }}</a>
-                <div class="clearfix"></div>
+            <div class="card" style="width: 18rem;">
+                 <div class="card-body">
+                        <a href="{{ url('produk/'.$r->id) }}" class="text-produk">
+                            <img src="{{ url_images('gambar', $r->gambar) }}" class="img-fluid w-100">
+                        </a>
+                        <div class="clearfix mb-3"></div>
+                        <h5 class="text-produk">Rp{{number_format($r->harga_jual)}},-</h5>
+                        <p>{{ $r->nama_produk }}</p>
+                          <a href="{{ url('produk/'.$r->id) }}" class="btn btn-primary">Lihat Selengkapnya</a>
+                        
+                        <div class="clearfix"></div>
+                </div>
             </div>  
         </div>  
         @endforeach

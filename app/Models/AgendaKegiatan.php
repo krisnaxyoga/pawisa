@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class Produk extends Model
+class AgendaKegiatan extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = 'produk';
+    protected $table = 'agenda_kegiatan';
     protected $dates = ['deleted_at'];
     protected $fillable = [
         "id_kategori",
@@ -21,4 +21,7 @@ class Produk extends Model
         "harga_jual",
     ];
 
+    public function kategori() {
+        return $this->belongsTo(Kategori::class, 'id_kategori');
+    }
 }

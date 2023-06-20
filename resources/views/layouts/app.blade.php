@@ -18,11 +18,12 @@
         <nav class="navbar navbar-expand-md navbar-custom shadow-sm py-3">
             <div class="container">
                 @if(!empty(auth()->user()->id))
+
                 <a class="navbar-brand" href="{{ route('admin.index') }}"><b>{{ config('app.name') }}</b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon text-dark pt-2"><i class="fas fa-bars"></i></span>
                 </button>
-                @else 
+                @else
                 <a class="navbar-brand" href="{{ url('/') }}"><b>{{ config('app.name') }}</b></a>
                 @endif
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -33,7 +34,7 @@
                                 <a class="nav-link active" aria-current="page" href="{{ route('admin.index') }}">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('admin.produk') }}">Data Produk</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('agenda.index') }}">Data Agenda Kegiatan</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ route('admin.kategori') }}">Data Kategori</a>
@@ -88,8 +89,8 @@
         src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     @yield('javascript')
 </body>

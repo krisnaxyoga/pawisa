@@ -15,4 +15,8 @@ class Kategori extends Model
     protected $fillable = [
         'nama_kategori',
     ];
+
+    public function agendakegiatan() {
+        return $this->hasMany(AgendaKegiatan::class);
+    }
 }

@@ -15,22 +15,24 @@ use App\Http\Controllers;
 */
 
 Route::get('/', [Controllers\HomeController::class, 'index'])->name('home.index');
-Route::get('produk/{category}', [Controllers\HomeController::class, 'produk'])->name('home.produk');
+Route::get('produk/{category}', [Controllers\HomeController::class, 'agenda_kegiatan'])->name('home.agenda_kegiatan');
 Route::get('kategori/{category}', [Controllers\HomeController::class, 'kategori'])->name('home.kategori');
 Route::get('search', [Controllers\HomeController::class, 'search'])->name('home.search');
 Route::get('home', [Controllers\HomeController::class, 'redir_admin'])->name('home.redir_admin');
 
-Route::group(['middleware' => 'revalidate'], function() {
-    Auth::routes(['register' => false,'reset' => false]);
+Route::group(['middleware' => 'revalidate'], function () {
+    Auth::routes(['register' => false, 'reset' => false]);
     Route::get('admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
-    // route produk
-    Route::prefix('admin/produk')->group(function () {
-        Route::get('/', [App\Http\Controllers\AdminController::class, 'produk'])->name('admin.produk');
-        Route::get('delete/{category}', [App\Http\Controllers\AdminController::class, 'delete_produk'])->name('admin.delete_produk');
-        Route::post('edit', [App\Http\Controllers\AdminController::class, 'edit_produk'])->name('admin.edit_produk');
-        Route::post('create', [App\Http\Controllers\AdminController::class, 'create_produk'])->name('admin.create_produk');
-        Route::post('update', [App\Http\Controllers\AdminController::class, 'update_produk'])->name('admin.update_produk');
+    // route agenda_kegiatan
+    Route::prefix('admin/agenda_kegiatan')->group(function () {
+        Route::get('/', [App\Http\Controllers\AdminController::class, 'agenda_kegiatan'])->name('admin.agenda_kegiatan');
+        Route::get('delete/{category}', [App\Http\Controllers\AdminController::class, 'delete_agenda_kegiatan'])->name('admin.delete_agenda_kegiatan');
+        Route::post('edit', [App\Http\Controllers\AdminController::class, 'edit_agenda_kegiatan'])->name('admin.edit_agenda_kegiatan');
+        Route::post('create', [App\Http\Controllers\AdminController::class, 'create_agenda_kegiatan'])->name('admin.create_agenda_kegiatan');
+        Route::post('update', [App\Http\Controllers\AdminController::class, 'update_agenda_kegiatan'])->name('admin.update_agenda_kegiatan');
     });
+    Route::resource('admin/agenda',App\Http\Controllers\AgendaKegiatanController::class);
+
     // route kategori
     Route::prefix('admin/kategori')->group(function () {
         Route::get('/', [App\Http\Controllers\AdminController::class, 'kategori'])->name('admin.kategori');
@@ -38,6 +40,8 @@ Route::group(['middleware' => 'revalidate'], function() {
         Route::post('create', [App\Http\Controllers\AdminController::class, 'create_kategori'])->name('admin.create_kategori');
         Route::post('update', [App\Http\Controllers\AdminController::class, 'update_kategori'])->name('admin.update_kategori');
     });
+
+
     // route profil
     Route::prefix('admin/profil')->group(function () {
         Route::get('/', [App\Http\Controllers\AdminController::class, 'profil'])->name('admin.profil');
