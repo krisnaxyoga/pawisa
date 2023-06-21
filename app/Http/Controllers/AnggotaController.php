@@ -15,9 +15,9 @@ class AnggotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($baga)
     {
-        return view('auth.register');
+        return view('auth.register',compact('baga'));
     }
 
     public function indexlist()
@@ -54,13 +54,15 @@ class AnggotaController extends Controller
                 ->withErrors($validator->errors())
                 ->withInput($request->all());
         } else {
+            // dd($request->hasFile('gambar'))
             if ($request->hasFile('gambar')) {
                 $image = $request->file('gambar');
                 $filename = time() . '.' . $image->getClientOriginalExtension();
                 $image->move(public_path('images'), $filename);
-
+                // dd($filename);
                 // Lakukan hal lain yang diperlukan, seperti menyimpan nama file dalam database
             }
+           
             $image = "/images/".$filename;
 
             $data = new Anggota();
@@ -70,6 +72,7 @@ class AnggotaController extends Controller
             $data->jenis_kelamin = $request->jeniskelamin;
             $data->jurusan = $request->jurusan;
             $data->prodi = $request->prodi;
+            $data->baga = $request->baga;
             $data->gambar = $image;
 
             $data->save();
@@ -146,6 +149,7 @@ class AnggotaController extends Controller
             $data->jenis_kelamin = $request->jeniskelamin;
             $data->jurusan = $request->jurusan;
             $data->prodi = $request->prodi;
+            $data->baga = $request->baga;
             $data->gambar = $imagew;
 
             $data->save();

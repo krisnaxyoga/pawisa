@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('DAFTAR ANGGOTA PAWISA') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{route('register.anggota.store')}}">
+                    <form enctype="multipart/form-data" method="POST" action="{{route('register.anggota.store')}}">
                         @csrf
 
                         <div class="row mb-3">
@@ -52,7 +52,7 @@
                                 @enderror
                             </div>
                         </div>
-
+<input hidden type="text" name="baga" value="{{$baga}}">
                         <div class="row mb-3">
                             <label for="jurusan" class="col-md-4 col-form-label text-md-right">{{ __('jurusan') }}</label>
 
@@ -91,13 +91,7 @@
                             <label for="gambar" class="col-md-4 col-form-label text-md-right">{{ __('gambar') }}</label>
 
                             <div class="col-md-6">
-                                <input id="gambar" type="file" class="form-control mb-2 @error('gambar') is-invalid @enderror" name="gambar" value="{{ old('gambar') }}" required autocomplete="gambar">
-
-                                @error('gambar')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="gambar" class="form-control form-control-solid" name="gambar" type="file" placeholder="Name" value="" />
                             </div>
                             <img style="width: 200px; height: auto;" id="preview" src="#" alt="Preview Gambar">
                         </div>

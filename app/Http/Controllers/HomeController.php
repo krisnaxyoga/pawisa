@@ -21,6 +21,8 @@ use Illuminate\Http\Request;
 use App\Models\Kategori;
 use App\Models\AgendaKegiatan;
 use App\Models\User;
+use App\Models\Jabatan;
+use App\Models\Rapat;
 
 class HomeController extends Controller
 {
@@ -40,7 +42,10 @@ class HomeController extends Controller
             'kategori'  => Kategori::All(),
             'produk'    => $produkdb->latest()->paginate(8),
         ];
-        return view('contents.frontend.home', $data);
+        $jabatan = Jabatan::all();
+        $rapat = Rapat::all();
+        $agenda = AgendaKegiatan::all();
+        return view('contents.frontend.home',compact('data','jabatan','rapat','agenda'));
     }
 
     public function kategori(Request $request, $id)

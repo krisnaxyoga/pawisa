@@ -17,7 +17,8 @@ use App\Http\Controllers;
 Route::get('/', [Controllers\HomeController::class, 'index'])->name('home.index');
 Route::get('produk/{category}', [Controllers\HomeController::class, 'agenda_kegiatan'])->name('home.agenda_kegiatan');
 Route::get('kategori/{category}', [Controllers\HomeController::class, 'kategori'])->name('home.kategori');
-Route::get('/anggota/register', [Controllers\AnggotaController::class, 'index'])->name('register.anggota');
+// Route::get('/anggota/register', [Controllers\AnggotaController::class, 'index'])->name('register.anggota');
+Route::get('/anggota/register/{baga}', [Controllers\AnggotaController::class, 'index'])->name('register.anggota.baga');
 
 Route::get('/success',[Controllers\HomeController::class, 'success'])->name('success');
 

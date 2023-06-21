@@ -29,6 +29,7 @@
                                     <th>jenis kelamin</th>
                                     <th>jurusan</th>
                                     <th>prodi</th>
+                                    <th>baga</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -43,6 +44,7 @@
                                         <td>{{ $item->jenis_kelamin }}</td>
                                         <td>{{ $item->jurusan }}</td>
                                         <td>{{ $item->prodi }}</td>
+                                        <td>{{ $item->baga }}</td>
                                         <td>
                                             <a href="{{route('admin.anggota.edit',$item->id)}}" data-id="{{ $item->id }}"
                                                 class="btn btn-success btn-sm ubah" title="Edit">

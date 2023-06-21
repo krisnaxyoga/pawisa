@@ -115,8 +115,19 @@
         <h4><b>Pengurus Inti PAWISA</b></h4>
 
         <div class="row justify-content-center" style="padding-top: 20px;">
+          @foreach ($jabatan as $item)
+            <div class="col" style="padding:10px;">
+              <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
+                <img src="{{$item->gambar}}" class="card-img-top" alt="{{$item->gambar}}">
+                <div class="card-body">
+                  <p class="card-text" align="center">{{$item->nama}}</p>
+                  <p class="card-text" align="center"><b>{{$item->kategori}}</b></p>
+                </div>
+              </div>
+            </div>
+          @endforeach
 
-          <div class="col" style="padding:10px;">
+          {{-- <div class="col" style="padding:10px;">
             <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
               <img src="{{asset('assets/img/11.png')}}" class="card-img-top" alt="...">
               <div class="card-body">
@@ -124,9 +135,9 @@
                 <p class="card-text" align="center"><b>Ketua</b></p>
               </div>
             </div>
-          </div>
+          </div> --}}
 
-          <div class="col" style="padding:10px;">
+          {{-- <div class="col" style="padding:10px;">
             <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
               <img src="{{asset('assets/img/40.jpg')}}" class="card-img-top" alt="...">
               <div class="card-body">
@@ -134,9 +145,9 @@
                 <p class="card-text" align="center"><b>Wakil Ketua</b></p>
               </div>
             </div>
-          </div>
+          </div> --}}
 
-          <div class="col" style="padding:10px;">
+          {{-- <div class="col" style="padding:10px;">
             <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
               <img src="{{asset('assets/img/42.jpg')}}" class="card-img-top" alt="...">
               <div class="card-body">
@@ -144,9 +155,9 @@
                 <p class="card-text" align="center"><b>Sekretaris Umum</b></p>
               </div>
             </div>
-          </div>
+          </div> --}}
 
-          <div class="col" style="padding-top: 20px; ">
+          {{-- <div class="col" style="padding-top: 20px; ">
             <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
               <img src="{{asset('assets/img/41.jpg')}}" class="card-img-top" alt="...">
               <div class="card-body">
@@ -154,9 +165,9 @@
                 <p class="card-text" align="center"><b>Bendahara Umum</b></p>
               </div>
             </div>
-          </div>
+          </div> --}}
 
-          <div class="col" style="padding-top: 20px;">
+          {{-- <div class="col" style="padding-top: 20px;">
             <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
               <img src="{{asset('assets/img/44.jpg')}}" class="card-img-top" alt="...">
               <div class="card-body">
@@ -164,9 +175,9 @@
                 <p class="card-text" align="center"><b>Wakil Sekretaris</b></p>
               </div>
             </div>
-          </div>
+          </div> --}}
 
-          <div class="col" style="padding-top: 20px;">
+          {{-- <div class="col" style="padding-top: 20px;">
             <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
               <img src="{{asset('assets/img/43.jpg')}}" class="card-img-top" alt="...">
               <div class="card-body">
@@ -174,7 +185,7 @@
                 <p class="card-text" align="center"><b>Wakil Bendahara</b></p>
               </div>
             </div>
-          </div>
+          </div> --}}
 
         </div>
       </div>
@@ -192,7 +203,7 @@
                 <div class="card-body">
                   <h5 class="card-title" align="center">Baga Parahyangan</h5>
                   <p class="card-text" align="justify">Parahyangan merupakan hubungan yang terjalin antara Manusia dengan Tuhan. Manusia adalah ciptaan Tuhan, yang di dalam tubuh seseorang terdapat atman yang merupakan percikan sinar suci kebesaran Tuhan.</p>
-                  <a href="/daftar/parahyangan" class="btn btn-primary">Daftar BAGA</a>
+                  <a href="{{route('register.anggota.baga',['baga'=>'parahyangan'])}}" class="btn btn-primary">Daftar BAGA</a>
                 </div>
               </div>
             </div>
@@ -203,7 +214,7 @@
                 <div class="card-body">
                   <h5 class="card-title" align="center">Baga Palemahan</h5>
                   <p class="card-text" align="justify">Palemahan di mana merupakan hubungan yang terjalin antara Manusia dengan alam lingkungan di sekitarnya. Hubungan manusia dengan alam dapat tercipta dengan lingkungan yang mencakup tumbuhan, hewan, dll.</p>
-                  <a href="/daftar/palemahan" class="btn btn-primary">Daftar BAGA</a>
+                  <a href="{{route('register.anggota.baga',['baga'=>'palemahan'])}}" class="btn btn-primary">Daftar BAGA</a>
                 </div>
               </div>
             </div>
@@ -214,26 +225,65 @@
                 <div class="card-body">
                   <h5 class="card-title" align="center">Baga Pawongan</h5>
                   <p class="card-text" align="justify">Pawongan merupakan hubungan yang terjalin antara manusia dengan sesamanya. Manusia adalah makhluk sosial, manusia juga harus menjaga hubungan keharmonisan dengan keluarga, teman, dan orang disekitarnya.</p>
-                  <a href="/daftar/pawongan" class="btn btn-primary">Daftar BAGA</a>
+                  <a href="{{route('register.anggota.baga',['baga'=>'pawongan'])}}" class="btn btn-primary">Daftar BAGA</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </div>
 
-  <div class="container">
-    <div class="row">
-        <div class="col-sm-9 mx-auto">
-            <div class="product"  style="margin-top: 50px;">
-                <h4 class="mb-4" align="center"><b>Agenda Kegiatan</b></h4>
-                @include('components.frontend.produk_list')
-            </div>
-            
+      <section id="rapat">
+        <div class="container reveal fade-top" style="padding-top: 90px;">
+          <h4><b>Rapat</b></h4>
+          <div class="row justify-content-center" style="padding-top: 20px;">
+
+            @foreach ($rapat as $item)
+              <div class="col" style="padding:10px;">
+                <div class="card" style="width: 18rem; border-color:black;">
+                  <div class="card-body">
+                    <h5 class="card-title" align="center">{{$item->nama_rapat}}</h5>
+                    <p class="card-text" align="justify">TANGGAL MULAI: {{$item->mulai_rapat}}</p>
+                    
+                    {{-- <p class="card-text" align="justify">TANGGAL SELESAI: {{$item->selesai_rapat}}</p> --}}
+                    
+                    <p class="card-text" align="justify">url/kode : {{$item->kode}}</p>
+                    <a href="{{$item->kode}}" class="btn btn-primary">bergabung</a>
+                  </div>
+                </div>
+              </div>
+            @endforeach
+          
+          </div>
         </div>
+      </section>
+
+      <section id="pengumuman">
+        <div class="container reveal fade-top" style="padding-top: 90px;">
+          <h4><b>Pengumuman</b></h4>
+          <div class="row justify-content-center" style="padding-top: 20px;">
+
+            @foreach ($agenda as $item)
+              <div class="col-lg-6" style="padding:10px;">
+                <div class="card">
+                  <img src="{{$item->gambar}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title" align="center">{{$item->nama}}</h5>
+                    <p class="card-text" align="justify">TANGGAL MULAI: {{$item->tgl_kegiatan}}</p>
+                    
+                    {{-- <p class="card-text" align="justify">TANGGAL SELESAI: {{$item->selesai_rapat}}</p> --}}
+                    <p class="card-text" align="justify">kategori : {{$item->kategori->nama_kategori}}</p>
+                    <p class="card-text" align="justify">Jenis kegiatan : {{$item->jenis_kegiatan}}</p>
+                    <a href="{{$item->kode}}" class="btn btn-primary">bergabung</a>
+                  </div>
+                </div>
+              </div>
+            @endforeach
+          
+          </div>
+        </div>
+      </section>
     </div>
-</div>
 @endsection
 @section('javascript')
 

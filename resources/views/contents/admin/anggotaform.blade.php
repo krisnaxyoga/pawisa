@@ -63,6 +63,15 @@
                                 </select>
                             </div>
                             <div class="form-group mb-3">
+                                <label class="small mb-1">Baga</label>
+                                <select required class="form-control @error('baga') is-invalid @enderror" name="baga" value="{{ old('baga') }}" id="">
+                                    <option value="">-pilih-</option>
+                                    <option value="parahyangan" {{ $model->baga == 'parahyangan' ? 'selected' : '' }}>parahyangan</option>
+                                    <option value="palemahan" {{ $model->baga == 'palemahan' ? 'selected' : '' }}>palemahan</option>
+                                    <option value="pawongan" {{ $model->baga == 'pawongan' ? 'selected' : '' }}>pawongan</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
                                 <button class="btn btn-primary float-right" type="submit"><i class="far fa-save mr-1"></i> Simpan</button>
                             </div>
                         </form>

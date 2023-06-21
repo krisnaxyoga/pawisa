@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>{{ $title ?? 'App Toko' }}</title>
+        <title>{{ $title ?? 'App pawisa' }}</title>
         <!-- Required meta tags -->
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta content="Toko Codekop Menjual berbagai macam hijab, jaket, aksesoris dan pakaian islami pria dan wanita" name="description">
-        <meta content="{{ $title ?? 'App Toko' }}" name="keywords">
+        <meta content="pawisa Codekop Menjual berbagai macam hijab, jaket, aksesoris dan pakaian islami pria dan wanita" name="description">
+        <meta content="{{ $title ?? 'App pawisa' }}" name="keywords">
         <meta property="og:locale" content="ID_id"/>
         <meta property="og:type" content="website"/>
         <meta property="og:image" content="{{ asset('assets/img/9.png') }}">
@@ -36,20 +36,20 @@
                             <a class="nav-link active text-white " aria-current="page" href="{{ url('/') }}" style="color:black;">Home</a>
                         </li>
                           <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="#pengurusinti" style="color:black;">Tentang</a>
+                            <a class="nav-link active text-white" aria-current="page" href="#tentang" style="color:black;">Tentang</a>
                         </li>
                           <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="{{ url('/') }}" style="color:black;">BAGA PAWISA</a>
+                            <a class="nav-link active text-white" aria-current="page" href="#bagapawisa" style="color:black;">BAGA PAWISA</a>
                         </li>
                           <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="{{ url('/') }}" style="color:black;">Rapat</a>
+                            <a class="nav-link active text-white" aria-current="page" href="#rapat" style="color:black;">Rapat</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="{{ url('/') }}" style="color:black;">Pengumuman</a>
+                            <a class="nav-link active text-white" aria-current="page" href="#pengumuman" style="color:black;">Pengumuman</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link active text-white" aria-current="page" href="{{ route('register.anggota') }}" style="color:black;">daftar</a>
-                        </li>
+                        </li> --}}
                     
                         <li class="nav-item">
                             @if(isset(auth()->user()->name))
