@@ -98,4 +98,8 @@ class HomeController extends Controller
     {
         return redirect('admin');
     }
+
+    public function success(){
+        return view('contents.frontend.success');
+    }
 }

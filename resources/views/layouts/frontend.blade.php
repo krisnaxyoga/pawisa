@@ -36,7 +36,7 @@
                             <a class="nav-link active text-white " aria-current="page" href="{{ url('/') }}" style="color:black;">Home</a>
                         </li>
                           <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="{{ url('/') }}" style="color:black;">Tentang</a>
+                            <a class="nav-link active text-white" aria-current="page" href="#pengurusinti" style="color:black;">Tentang</a>
                         </li>
                           <li class="nav-item">
                             <a class="nav-link active text-white" aria-current="page" href="{{ url('/') }}" style="color:black;">BAGA PAWISA</a>
@@ -47,6 +47,9 @@
                         <li class="nav-item">
                             <a class="nav-link active text-white" aria-current="page" href="{{ url('/') }}" style="color:black;">Pengumuman</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="{{ route('register.anggota') }}" style="color:black;">daftar</a>
+                        </li>
                     
                         <li class="nav-item">
                             @if(isset(auth()->user()->name))
@@ -54,13 +57,6 @@
                             @else 
                                 <a class="nav-link active text-white" href="{{ url('login') }}">Login</a>
                             @endif
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#" 
-                                data-bs-toggle="modal" data-bs-target="#ModalSearch" 
-                                tabindex="-1" aria-disabled="true">
-                                <i class="fas fa-search" style="color:white;"></i>
-                            </a>
                         </li>
                     </ul>
                 </div>

@@ -8,9 +8,9 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
 
-                        <div class="card-title"><h2>Data Agenda</h2></div>
+                        <div class="card-title"><h2>Data jabatan</h2></div>
                         <div>
-                            <a href="{{ route('agenda.create') }}" class="btn btn-primary">+ Add Agenda</a>
+                            <a href="{{ route('jabatan.create') }}" class="btn btn-primary">+ Add jabatan</a>
 
                         </div>
 
@@ -22,11 +22,14 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Gambar</th>
-                                    <th>Kategori</th>
-                                    <th>Nama Agenda</th>
-                                    <th>jumlahview</th>
-                                    <th>Tanggal</th>
+                                    <th>foto</th>
+                                    <th>nama</th>
+                                    <th>telepon</th>
+                                    <th>jabatan</th>
+                                    <th>alamat</th>
+                                    <th>jenis kelamin</th>
+                                    <th>jurusan</th>
+                                    <th>prodi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -35,21 +38,19 @@
                                     <tr>
                                         <td>{{ $key+1 }}</td>
                                         <td><img src="{{ $item->gambar }}" alt="" style="width: 200px;height:200px"></td>
-                                        <td>{{ $item->kategori->nama_kategori }}</td>
                                         <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->jumlahview }}</td>
-                                        <td>{{ $item->tgl_kegiatan }}</td>
+                                        <td>{{ $item->telp }}</td>
+                                        <td>{{ $item->kategori }}</td>
+                                        <td>{{ $item->alamat }}</td>
+                                        <td>{{ $item->jenis_kelamin }}</td>
+                                        <td>{{ $item->jurusan }}</td>
+                                        <td>{{ $item->prodi }}</td>
                                         <td>
-                                            <a href="{{route('agenda.edit',$item->id)}}" data-id="{{ $item->id }}"
+                                            <a href="{{route('jabatan.edit',$item->id)}}" data-id="{{ $item->id }}"
                                                 class="btn btn-success btn-sm ubah" title="Edit">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            {{-- <a href="{{route('agenda.destroy',$item->id)}}"
-                                                class="btn btn-danger btn-sm"
-                                                onclick="javascript:return confirm(`Data ingin dihapus ?`);" title="Delete">
-                                               
-                                            </a> --}}
-                                            <form class="d-inline" action="{{route('agenda.destroy', $item->id)}}" method="POST" onSubmit="return confirm('Apakah anda yakin akan menghapus data ini?');">
+                                            <form class="d-inline" action="{{route('jabatan.destroy', $item->id)}}" method="POST" onSubmit="return confirm('Apakah anda yakin akan menghapus data ini?');">
                                                 @csrf
                                                 @method('delete')
     

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Kategori;
-use App\Models\AgendaKegiatan;
+use App\Models\Anggota;
+use App\Models\Pendaftaran;
+
 use Illuminate\Support\Facades\Validator;
 
-class AgendaKegiatanController extends Controller
+class AnggotaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +17,14 @@ class AgendaKegiatanController extends Controller
      */
     public function index()
     {
-        $data = AgendaKegiatan::all();
-        return view('contents.admin.agenda',compact('data'));
+        return view('auth.register');
     }
 
+    public function indexlist()
+    {
+        $data = Anggota::all();
+        return view('contents.admin.anggota',compact('data'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -27,9 +32,8 @@ class AgendaKegiatanController extends Controller
      */
     public function create()
     {
-        $model = new AgendaKegiatan();
-        $kategori = Kategori::all();
-        return view('contents.admin.agendaform',compact('model','kategori'));
+        $model = new Anggota();
+        return view('contents.admin.anggotaform',compact('model'));
     }
 
     /**
@@ -41,8 +45,7 @@ class AgendaKegiatanController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'namakegiatan' => 'required',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048', // maksimal 5MB
+            'name' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -60,19 +63,24 @@ class AgendaKegiatanController extends Controller
             }
             $image = "/images/".$filename;
 
-            $data = new AgendaKegiatan();
-            $data->id_kategori = $request->id_kategori;
-            $data->nama = $request->namakegiatan;
-            $data->tgl_kegiatan = $request->tanggalkegiatan;
-            $data->jumlahview = '0';
-            $data->jenis_kegiatan = $request->jeniskegiatan;
-            $data->deskripsi = $request->deskripsi;
+            $data = new Anggota();
+            $data->nama = $request->name;
+            $data->telp = $request->telp;
+            $data->alamat = $request->alamat;
+            $data->jenis_kelamin = $request->jeniskelamin;
+            $data->jurusan = $request->jurusan;
+            $data->prodi = $request->prodi;
             $data->gambar = $image;
 
             $data->save();
 
+            $pen = new Pendaftaran();
+            $pen->id_anggota = $data->id;
+            $pen->id_jabatan = 0;
+            $pen->save();
+
             return redirect()
-                ->route('agenda.index')
+                ->route('success')
                 ->with('message', 'Data berhasil disimpan.');
         }
     }
@@ -96,9 +104,8 @@ class AgendaKegiatanController extends Controller
      */
     public function edit($id)
     {
-        $model = AgendaKegiatan::find($id);
-        $kategori = Kategori::all();
-        return view('contents.admin.agendaform',compact('model','kategori'));
+        $model = Anggota::find($id);
+        return view('contents.admin.anggotaform',compact('model'));
     }
 
     /**
@@ -111,8 +118,7 @@ class AgendaKegiatanController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'namakegiatan' => 'required',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5048', // maksimal 5MB
+            'name' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -121,6 +127,7 @@ class AgendaKegiatanController extends Controller
                 ->withErrors($validator->errors())
                 ->withInput($request->all());
         } else {
+            
             if ($request->hasFile('gambar')) {
                 $image = $request->file('gambar');
                 $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -131,21 +138,20 @@ class AgendaKegiatanController extends Controller
             }else{
                 $imagew = $request->gambarw;
             }
-           
 
-            $data = AgendaKegiatan::find($id);
-            $data->id_kategori = $request->id_kategori;
-            $data->nama = $request->namakegiatan;
-            $data->tgl_kegiatan = $request->tanggalkegiatan;
-            $data->jumlahview = '0';
-            $data->jenis_kegiatan = $request->jeniskegiatan;
-            $data->deskripsi = $request->deskripsi;
+            $data = Anggota::find($id);
+            $data->nama = $request->name;
+            $data->telp = $request->telp;
+            $data->alamat = $request->alamat;
+            $data->jenis_kelamin = $request->jeniskelamin;
+            $data->jurusan = $request->jurusan;
+            $data->prodi = $request->prodi;
             $data->gambar = $imagew;
 
             $data->save();
 
             return redirect()
-                ->route('agenda.index')
+                ->route('success')
                 ->with('message', 'Data berhasil disimpan.');
         }
     }
@@ -158,7 +164,7 @@ class AgendaKegiatanController extends Controller
      */
     public function destroy($id)
     {
-        $post = AgendaKegiatan::find($id);
+        $post = Anggota::find($id);
 
         $post->delete();
         return redirect()->back()->with('message', 'Data berhasil dihapus');

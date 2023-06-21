@@ -34,7 +34,16 @@
                                 <a class="nav-link active" aria-current="page" href="{{ route('admin.index') }}">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('agenda.index') }}">Data Agenda Kegiatan</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('admin.anggota.list') }}">Anggota</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('jabatan.index') }}">Jabatan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('agenda.index') }}">Agenda Kegiatan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('rapat.index') }}">Rapat</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ route('admin.kategori') }}">Data Kategori</a>

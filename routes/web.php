@@ -17,7 +17,11 @@ use App\Http\Controllers;
 Route::get('/', [Controllers\HomeController::class, 'index'])->name('home.index');
 Route::get('produk/{category}', [Controllers\HomeController::class, 'agenda_kegiatan'])->name('home.agenda_kegiatan');
 Route::get('kategori/{category}', [Controllers\HomeController::class, 'kategori'])->name('home.kategori');
-Route::get('search', [Controllers\HomeController::class, 'search'])->name('home.search');
+Route::get('/anggota/register', [Controllers\AnggotaController::class, 'index'])->name('register.anggota');
+
+Route::get('/success',[Controllers\HomeController::class, 'success'])->name('success');
+
+Route::post('/anggota/register/store', [Controllers\AnggotaController::class, 'store'])->name('register.anggota.store');
 Route::get('home', [Controllers\HomeController::class, 'redir_admin'])->name('home.redir_admin');
 
 Route::group(['middleware' => 'revalidate'], function () {
@@ -32,6 +36,17 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::post('update', [App\Http\Controllers\AdminController::class, 'update_agenda_kegiatan'])->name('admin.update_agenda_kegiatan');
     });
     Route::resource('admin/agenda',App\Http\Controllers\AgendaKegiatanController::class);
+    Route::get('/anggota/list', [App\Http\Controllers\AnggotaController::class, 'indexlist'])->name('admin.anggota.list');
+    Route::get('/anggota/create', [App\Http\Controllers\AnggotaController::class, 'create'])->name('admin.anggota.create');
+    Route::post('/anggota/store', [App\Http\Controllers\AnggotaController::class, 'store'])->name('admin.anggota.store');
+    Route::put('/anggota/update/{id}', [App\Http\Controllers\AnggotaController::class, 'update'])->name('admin.anggota.update');
+    Route::get('/anggota/edit/{id}', [App\Http\Controllers\AnggotaController::class, 'edit'])->name('admin.anggota.edit');
+
+    Route::get('/anggota/destroy/{id}', [App\Http\Controllers\AnggotaController::class, 'destroy'])->name('admin.anggota.destroy');
+
+    Route::resource('admin/jabatan',App\Http\Controllers\JabatanController::class);
+    Route::resource('admin/rapat',App\Http\Controllers\RapatController::class);
+
 
     // route kategori
     Route::prefix('admin/kategori')->group(function () {

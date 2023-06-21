@@ -23,7 +23,7 @@
                                 <label for="">kategori</label>
                                 <select name="id_kategori" id="" class="form-control">
                                     @foreach ($kategori as $item)
-                                        <option value="{{ $item->id }}">{{ $item->nama_kategori }}</option>
+                                        <option value="{{ $item->id }}" {{ $item->id == old('nama', $model->id_kategori) ? 'selected' : '' }}>{{ $item->nama_kategori }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -40,8 +40,10 @@
                                 <input class="form-control form-control-solid" name="tanggalkegiatan" type="date" placeholder="Name" value="{{ old('tgl_kegiatan', $model->tgl_kegiatan) }}" />
                             </div>
                             <div class="form-group mb-3">
+                                <img style="width: 200px; height: auto;" id="preview" src="#" alt="Preview Gambar">
                                 <label class="small mb-1">gambar</label>
-                                <input class="form-control form-control-solid" name="gambar" type="file" placeholder="Name" value="{{ old('gambar', $model->gambar) }}" />
+                                <input id="gambar" class="form-control form-control-solid" name="gambar" type="file" placeholder="Name" value="{{ old('gambar', $model->gambar) }}" />
+                                <input class="form-control form-control-solid" hidden name="gambarw" type="text" placeholder="Name" value="{{ old('gambar', $model->gambar) }}" />
                             </div>
                             <div class="form-group mb-3">
                                 <label class="small mb-1">Deskripsi</label>
@@ -57,5 +59,19 @@
         </div>
     </div>
 </section>
+<script>
+    var fileInput = document.getElementById('gambar');
+    var previewImg = document.getElementById('preview');
 
+    fileInput.addEventListener('change', function(e) {
+      var file = fileInput.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        previewImg.src = e.target.result;
+      }
+
+      reader.readAsDataURL(file);
+    })
+  </script>
 @endsection
