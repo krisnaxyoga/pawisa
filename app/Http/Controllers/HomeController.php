@@ -44,7 +44,7 @@ class HomeController extends Controller
         ];
         $jabatan = Jabatan::all();
         $rapat = Rapat::all();
-        $agenda = AgendaKegiatan::all();
+        $agenda = AgendaKegiatan::select('*')->paginate(2);
         return view('contents.frontend.home',compact('data','jabatan','rapat','agenda'));
     }
 
@@ -59,6 +59,19 @@ class HomeController extends Controller
             'produk'    => $produkdb->latest()->paginate(8),
         ];
         return view('contents.frontend.kategori', $data);
+    }
+
+    public function agenda(){
+        $agenda = AgendaKegiatan::all();
+        return view('contents.frontend.agenda',compact('agenda'));
+    }
+
+    public function agendadetail($id){
+        $agenda = AgendaKegiatan::find($id);
+        $agenda->jumlahview = $agenda->jumlahview+1;
+        $agenda->save();
+        
+        return view('contents.frontend.agendadetail',compact('agenda'));
     }
 
     public function search(Request $request)

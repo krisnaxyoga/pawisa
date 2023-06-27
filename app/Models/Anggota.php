@@ -9,4 +9,8 @@ class Anggota extends Model
 {
     protected $table = 'anggota';
     use HasFactory;
+
+    public function pendaftaran() {
+        return $this->hasMany(Pendaftaran::class);
+    }
 }

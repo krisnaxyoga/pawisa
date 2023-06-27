@@ -246,9 +246,13 @@
                     <p class="card-text" align="justify">TANGGAL MULAI: {{$item->mulai_rapat}}</p>
                     
                     {{-- <p class="card-text" align="justify">TANGGAL SELESAI: {{$item->selesai_rapat}}</p> --}}
-                    
-                    <p class="card-text" align="justify">url/kode : {{$item->kode}}</p>
-                    <a href="{{$item->kode}}" class="btn btn-primary">bergabung</a>
+                    <input type="text" value="{{$item->kode}}" name="name" id="name" class="form-control" placeholder="Masukkan Nama" aria-describedby="copyButton">
+                    <div class="input-group-append d-flex mt-2">
+                      <button class="btn btn-primary" type="button" id="copyButton" onclick="copyInputValue()">Copy link</button>
+                      <a href="{{$item->kode}}" class="btn btn-warning mx-2">bergabung</a>
+                    </div>
+                    {{-- <p class="card-text" align="justify">url/kode : </p> --}}
+                   
                   </div>
                 </div>
               </div>
@@ -266,7 +270,7 @@
             @foreach ($agenda as $item)
               <div class="col-lg-6" style="padding:10px;">
                 <div class="card">
-                  <img src="{{$item->gambar}}" class="card-img-top" alt="...">
+                  <img src="{{$item->gambar}}" class="card-img-top h-50" style="height: 200px!important; object-fit: cover!important;" alt="...">
                   <div class="card-body">
                     <h5 class="card-title" align="center">{{$item->nama}}</h5>
                     <p class="card-text" align="justify">TANGGAL MULAI: {{$item->tgl_kegiatan}}</p>
@@ -274,16 +278,40 @@
                     {{-- <p class="card-text" align="justify">TANGGAL SELESAI: {{$item->selesai_rapat}}</p> --}}
                     <p class="card-text" align="justify">kategori : {{$item->kategori->nama_kategori}}</p>
                     <p class="card-text" align="justify">Jenis kegiatan : {{$item->jenis_kegiatan}}</p>
-                    <a href="{{$item->kode}}" class="btn btn-primary">bergabung</a>
+                    <p class="card-text" align="justify">jumlah view : {{$item->jumlahview}}</p>
+                    <a href="{{route('home.agendadetail',$item->id)}}" class="btn btn-primary">
+                      Lihat
+                    </a>
                   </div>
                 </div>
               </div>
             @endforeach
           
           </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-4">
+               <a class="btn btn-warning" href="{{route('home.agenda')}}">lihat pengumuman</a>
+            </div>
+           
+          </div>
         </div>
       </section>
     </div>
+    <script>
+      function copyInputValue() {
+        
+        alert('url sudah di copy');
+        /* Mendapatkan elemen input berdasarkan ID */
+        var inputElement = document.getElementById("name");
+      
+        /* Memilih teks dalam input */
+        inputElement.select();
+        /* Menyalin teks yang dipilih */
+        document.execCommand("copy");
+
+        
+      }
+      </script>
 @endsection
 @section('javascript')
 

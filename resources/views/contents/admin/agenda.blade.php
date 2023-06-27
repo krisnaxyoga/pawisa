@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive mt-1">
-                        <table class="table table-striped table-bordered" id="example1">
+                        <table class="table table-striped table-bordered" id="myTable">
                             <thead>
                                 <tr>
                                     <th>No</th>

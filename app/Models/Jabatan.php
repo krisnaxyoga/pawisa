@@ -9,4 +9,8 @@ class Jabatan extends Model
 {
     protected $table = 'jabatan';
     use HasFactory;
+
+    public function pendaftaran() {
+        return $this->hasMany(Pendaftaran::class);
+    }
 }

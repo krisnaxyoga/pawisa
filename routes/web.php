@@ -15,6 +15,9 @@ use App\Http\Controllers;
 */
 
 Route::get('/', [Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/agenda', [Controllers\HomeController::class, 'agenda'])->name('home.agenda');
+
+Route::get('/agendadetail/{id}', [Controllers\HomeController::class, 'agendadetail'])->name('home.agendadetail');
 Route::get('produk/{category}', [Controllers\HomeController::class, 'agenda_kegiatan'])->name('home.agenda_kegiatan');
 Route::get('kategori/{category}', [Controllers\HomeController::class, 'kategori'])->name('home.kategori');
 // Route::get('/anggota/register', [Controllers\AnggotaController::class, 'index'])->name('register.anggota');
