@@ -4,6 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                @if (session('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
                <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
@@ -45,7 +50,7 @@
                                             <form class="d-inline" action="{{route('rapat.destroy', $item->id)}}" method="POST" onSubmit="return confirm('Apakah anda yakin akan menghapus data ini?');">
                                                 @csrf
                                                 @method('delete')
-    
+
                                                 <button type="submit" class="btn btn-danger btn-sm">
                                                     <i class="fa fa-times"></i>
                                                 </button>
@@ -53,7 +58,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                              
+
                             </tbody>
                         </table>
                     </div>

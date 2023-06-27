@@ -62,7 +62,7 @@ class AnggotaController extends Controller
                 // dd($filename);
                 // Lakukan hal lain yang diperlukan, seperti menyimpan nama file dalam database
             }
-           
+
             $image = "/images/".$filename;
 
             $data = new Anggota();
@@ -83,8 +83,54 @@ class AnggotaController extends Controller
             $pen->save();
 
             return redirect()
-                ->route('success')
+                ->route('admin.anggota.list')
                 ->with('message', 'Data berhasil disimpan.');
+        }
+    }
+
+    public function storeregis(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator->errors())
+                ->withInput($request->all());
+        } else {
+            // dd($request->hasFile('gambar'))
+            if ($request->hasFile('gambar')) {
+                $image = $request->file('gambar');
+                $filename = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'), $filename);
+                // dd($filename);
+                // Lakukan hal lain yang diperlukan, seperti menyimpan nama file dalam database
+            }
+
+            $image = "/images/".$filename;
+
+            $data = new Anggota();
+            $data->nama = $request->name;
+            $data->telp = $request->telp;
+            $data->alamat = $request->alamat;
+            $data->jenis_kelamin = $request->jeniskelamin;
+            $data->jurusan = $request->jurusan;
+            $data->prodi = $request->prodi;
+            $data->baga = $request->baga;
+            $data->gambar = $image;
+
+            $data->save();
+
+            $pen = new Pendaftaran();
+            $pen->id_anggota = $data->id;
+            $pen->id_jabatan = 0;
+            $pen->save();
+
+            return redirect()
+                ->route('home.index')
+                ->with('message', 'Pendaftaran berhasil disimpan.');
         }
     }
 
@@ -130,7 +176,7 @@ class AnggotaController extends Controller
                 ->withErrors($validator->errors())
                 ->withInput($request->all());
         } else {
-            
+
             if ($request->hasFile('gambar')) {
                 $image = $request->file('gambar');
                 $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -155,7 +201,7 @@ class AnggotaController extends Controller
             $data->save();
 
             return redirect()
-                ->route('success')
+                ->route('admin.anggota.list')
                 ->with('message', 'Data berhasil disimpan.');
         }
     }

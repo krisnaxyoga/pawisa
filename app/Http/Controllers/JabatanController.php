@@ -75,7 +75,7 @@ class JabatanController extends Controller
             $pen->save();
 
             return redirect()
-                ->route('success')
+                ->route('jabatan.index')
                 ->with('message', 'Data berhasil disimpan.');
         }
     }
@@ -122,7 +122,7 @@ class JabatanController extends Controller
                 ->withErrors($validator->errors())
                 ->withInput($request->all());
         } else {
-            
+
             if ($request->hasFile('gambar')) {
                 $image = $request->file('gambar');
                 $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -147,7 +147,7 @@ class JabatanController extends Controller
             $data->save();
 
             return redirect()
-                ->route('success')
+                ->route('jabatan.index')
                 ->with('message', 'Data berhasil disimpan.');
         }
     }

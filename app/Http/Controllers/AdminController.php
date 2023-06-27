@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Kategori;
 use App\Models\AgendaKegiatan;
 use App\Models\User;
+use App\Models\Anggota;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -227,7 +229,18 @@ class AdminController extends Controller
         ];
         return view('contents.admin.profil', $data);
     }
+    public function report(){
+        $data = Anggota::all();
+        // dd($data);
+        return view('contents.admin.report',compact('data'));
+    }
+    public function cetak(Request $request){
 
+        // dd($request->date);
+        $data = Anggota::whereDate('created_at',$request->date)->where('baga',$request->type)->get();
+        // dd($data);
+        return view('contents.admin.cetak',compact('data'));
+    }
     // data proses profil
     public function update_profil(Request $request)
     {

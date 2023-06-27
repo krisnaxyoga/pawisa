@@ -25,12 +25,15 @@ Route::get('/anggota/register/{baga}', [Controllers\AnggotaController::class, 'i
 
 Route::get('/success',[Controllers\HomeController::class, 'success'])->name('success');
 
-Route::post('/anggota/register/store', [Controllers\AnggotaController::class, 'store'])->name('register.anggota.store');
+Route::post('/anggota/register/store', [Controllers\AnggotaController::class, 'storeregis'])->name('register.anggota.store');
 Route::get('home', [Controllers\HomeController::class, 'redir_admin'])->name('home.redir_admin');
 
 Route::group(['middleware' => 'revalidate'], function () {
     Auth::routes(['register' => false, 'reset' => false]);
     Route::get('admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
+    Route::get('/report', [App\Http\Controllers\AdminController::class, 'report'])->name('admin.report');
+
+    Route::get('/cetak', [App\Http\Controllers\AdminController::class, 'cetak'])->name('admin.cetak');
     // route agenda_kegiatan
     Route::prefix('admin/agenda_kegiatan')->group(function () {
         Route::get('/', [App\Http\Controllers\AdminController::class, 'agenda_kegiatan'])->name('admin.agenda_kegiatan');

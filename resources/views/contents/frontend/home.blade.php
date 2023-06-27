@@ -109,6 +109,16 @@
       </div>
     </section>
   </div>
+  @if (session('message'))
+        <section>
+            <div class="container">
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            </div>
+        </section>
+    @endif
+
   <section id="pengurusinti">
     <div class="container reveal fade-right" style="padding-top: 100px;">
       <div class="container" style="padding-top: 30px;" align="center">
@@ -244,7 +254,7 @@
                   <div class="card-body">
                     <h5 class="card-title" align="center">{{$item->nama_rapat}}</h5>
                     <p class="card-text" align="justify">TANGGAL MULAI: {{$item->mulai_rapat}}</p>
-                    
+
                     {{-- <p class="card-text" align="justify">TANGGAL SELESAI: {{$item->selesai_rapat}}</p> --}}
                     <input type="text" value="{{$item->kode}}" name="name" id="name" class="form-control" placeholder="Masukkan Nama" aria-describedby="copyButton">
                     <div class="input-group-append d-flex mt-2">
@@ -252,12 +262,18 @@
                       <a href="{{$item->kode}}" class="btn btn-warning mx-2">bergabung</a>
                     </div>
                     {{-- <p class="card-text" align="justify">url/kode : </p> --}}
-                   
+
                   </div>
                 </div>
               </div>
             @endforeach
-          
+
+          </div>
+          <div class="mt-4 mx-5 d-flex justify-content-center">
+            <div>
+                {{ $rapat->links() }}
+            </div>
+
           </div>
         </div>
       </section>
@@ -274,7 +290,7 @@
                   <div class="card-body">
                     <h5 class="card-title" align="center">{{$item->nama}}</h5>
                     <p class="card-text" align="justify">TANGGAL MULAI: {{$item->tgl_kegiatan}}</p>
-                    
+
                     {{-- <p class="card-text" align="justify">TANGGAL SELESAI: {{$item->selesai_rapat}}</p> --}}
                     <p class="card-text" align="justify">kategori : {{$item->kategori->nama_kategori}}</p>
                     <p class="card-text" align="justify">Jenis kegiatan : {{$item->jenis_kegiatan}}</p>
@@ -286,30 +302,30 @@
                 </div>
               </div>
             @endforeach
-          
+
           </div>
           <div class="row justify-content-center">
             <div class="col-lg-4">
                <a class="btn btn-warning" href="{{route('home.agenda')}}">lihat pengumuman</a>
             </div>
-           
+
           </div>
         </div>
       </section>
     </div>
     <script>
       function copyInputValue() {
-        
+
         alert('url sudah di copy');
         /* Mendapatkan elemen input berdasarkan ID */
         var inputElement = document.getElementById("name");
-      
+
         /* Memilih teks dalam input */
         inputElement.select();
         /* Menyalin teks yang dipilih */
         document.execCommand("copy");
 
-        
+
       }
       </script>
 @endsection

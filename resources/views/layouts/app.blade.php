@@ -26,13 +26,13 @@
           border-collapse: collapse;
           border-spacing: 0;
         }
-    
+
         #myTable th,
         #myTable td {
           padding: 8px;
           border-bottom: 1px solid #ddd;
         }
-    
+
         #myTable th {
           background-color: #f2f2f2;
         }
@@ -72,6 +72,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ route('admin.kategori') }}">Data Kategori</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('admin.report') }}">Laporan</a>
                             </li>
                         @endif
                         <!-- Authentication Links -->

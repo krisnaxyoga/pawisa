@@ -59,7 +59,7 @@ class RapatController extends Controller
 
 
             return redirect()
-                ->route('success')
+                ->route('rapat.index')
                 ->with('message', 'Data berhasil disimpan.');
         }
     }

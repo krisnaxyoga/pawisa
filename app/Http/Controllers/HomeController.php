@@ -2,17 +2,17 @@
 
 /**
  * Codekop Toko Online
- * 
+ *
  * @link       https://www.codekop.com/
  * @version    1.0.1
- * @copyright  (c) 2021 
- * 
+ * @copyright  (c) 2021
+ *
  * File      : HomeController.php
  * Web Name  : Toko Online
- * Developer : Fauzan Falah 
+ * Developer : Fauzan Falah
  * E-mail    : fauzancodekop@gmail.com / fauzan1892@codekop.com
- * 
- * 
+ *
+ *
  **/
 
 namespace App\Http\Controllers;
@@ -43,7 +43,7 @@ class HomeController extends Controller
             'produk'    => $produkdb->latest()->paginate(8),
         ];
         $jabatan = Jabatan::all();
-        $rapat = Rapat::all();
+        $rapat = Rapat::paginate(3);
         $agenda = AgendaKegiatan::select('*')->paginate(2);
         return view('contents.frontend.home',compact('data','jabatan','rapat','agenda'));
     }
@@ -62,7 +62,7 @@ class HomeController extends Controller
     }
 
     public function agenda(){
-        $agenda = AgendaKegiatan::all();
+        $agenda = AgendaKegiatan::paginate(6);
         return view('contents.frontend.agenda',compact('agenda'));
     }
 
@@ -70,7 +70,7 @@ class HomeController extends Controller
         $agenda = AgendaKegiatan::find($id);
         $agenda->jumlahview = $agenda->jumlahview+1;
         $agenda->save();
-        
+
         return view('contents.frontend.agendadetail',compact('agenda'));
     }
 
