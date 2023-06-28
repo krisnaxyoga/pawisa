@@ -48,6 +48,7 @@
                                     <th>jurusan</th>
                                     <th>prodi</th>
                                     <th>baga</th>
+                                    <th>create_at</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,6 +62,7 @@
                                         <td>{{ $item->jurusan }}</td>
                                         <td>{{ $item->prodi }}</td>
                                         <td>{{ $item->baga }}</td>
+                                        <td>{{ \Carbon\Carbon::create($item->created_at)->format('Y-m-d') }}</td>
                                     </tr>
                                 @endforeach
 

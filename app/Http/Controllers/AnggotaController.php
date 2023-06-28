@@ -129,7 +129,7 @@ class AnggotaController extends Controller
             $pen->save();
 
             return redirect()
-                ->route('home.index')
+                ->route('register.anggota.baga',$request->baga)
                 ->with('message', 'Pendaftaran berhasil disimpan.');
         }
     }

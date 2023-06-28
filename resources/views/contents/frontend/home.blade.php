@@ -137,66 +137,6 @@
             </div>
           @endforeach
 
-          {{-- <div class="col" style="padding:10px;">
-            <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
-              <img src="{{asset('assets/img/11.png')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text" align="center">ALDI</p>
-                <p class="card-text" align="center"><b>Ketua</b></p>
-              </div>
-            </div>
-          </div> --}}
-
-          {{-- <div class="col" style="padding:10px;">
-            <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
-              <img src="{{asset('assets/img/40.jpg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text" align="center">NADYA</p>
-                <p class="card-text" align="center"><b>Wakil Ketua</b></p>
-              </div>
-            </div>
-          </div> --}}
-
-          {{-- <div class="col" style="padding:10px;">
-            <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
-              <img src="{{asset('assets/img/42.jpg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text" align="center">SINTYA</p>
-                <p class="card-text" align="center"><b>Sekretaris Umum</b></p>
-              </div>
-            </div>
-          </div> --}}
-
-          {{-- <div class="col" style="padding-top: 20px; ">
-            <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
-              <img src="{{asset('assets/img/41.jpg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text" align="center">RINA</p>
-                <p class="card-text" align="center"><b>Bendahara Umum</b></p>
-              </div>
-            </div>
-          </div> --}}
-
-          {{-- <div class="col" style="padding-top: 20px;">
-            <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
-              <img src="{{asset('assets/img/44.jpg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text" align="center">VIERA</p>
-                <p class="card-text" align="center"><b>Wakil Sekretaris</b></p>
-              </div>
-            </div>
-          </div> --}}
-
-          {{-- <div class="col" style="padding-top: 20px;">
-            <div class="card" style="width: 18rem; box-shadow:2px 2px 2px 2px #888888;">
-              <img src="{{asset('assets/img/43.jpg')}}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text" align="center">INTAN</p>
-                <p class="card-text" align="center"><b>Wakil Bendahara</b></p>
-              </div>
-            </div>
-          </div> --}}
-
         </div>
       </div>
     </div>
@@ -213,7 +153,26 @@
                 <div class="card-body">
                   <h5 class="card-title" align="center">Baga Parahyangan</h5>
                   <p class="card-text" align="justify">Parahyangan merupakan hubungan yang terjalin antara Manusia dengan Tuhan. Manusia adalah ciptaan Tuhan, yang di dalam tubuh seseorang terdapat atman yang merupakan percikan sinar suci kebesaran Tuhan.</p>
-                  <a href="{{route('register.anggota.baga',['baga'=>'parahyangan'])}}" class="btn btn-primary">Daftar BAGA</a>
+                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="fa fa-eye"></i> lihat
+                  </button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          {{-- tolong disini isi kontennya --}}
+                        </div>
+                        <div class="modal-footer">
+                          <a href="{{route('register.anggota.baga',['baga'=>'parahyangan'])}}" class="btn btn-primary">Daftar BAGA</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -224,7 +183,27 @@
                 <div class="card-body">
                   <h5 class="card-title" align="center">Baga Palemahan</h5>
                   <p class="card-text" align="justify">Palemahan di mana merupakan hubungan yang terjalin antara Manusia dengan alam lingkungan di sekitarnya. Hubungan manusia dengan alam dapat tercipta dengan lingkungan yang mencakup tumbuhan, hewan, dll.</p>
-                  <a href="{{route('register.anggota.baga',['baga'=>'palemahan'])}}" class="btn btn-primary">Daftar BAGA</a>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                    <i class="fa fa-eye"></i> lihat
+                  </button>
+                   <!-- Modal -->
+                   <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          {{-- tolong disini isi kontennya --}}
+                        </div>
+                        <div class="modal-footer">
+                          <a href="{{route('register.anggota.baga',['baga'=>'palemahan'])}}" class="btn btn-primary">Daftar BAGA</a>
+                 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -235,7 +214,27 @@
                 <div class="card-body">
                   <h5 class="card-title" align="center">Baga Pawongan</h5>
                   <p class="card-text" align="justify">Pawongan merupakan hubungan yang terjalin antara manusia dengan sesamanya. Manusia adalah makhluk sosial, manusia juga harus menjaga hubungan keharmonisan dengan keluarga, teman, dan orang disekitarnya.</p>
-                  <a href="{{route('register.anggota.baga',['baga'=>'pawongan'])}}" class="btn btn-primary">Daftar BAGA</a>
+                  
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                    <i class="fa fa-eye"></i> lihat
+                  </button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          {{-- tolong disini isi kontennya --}}
+                        </div>
+                        <div class="modal-footer">
+                          <a href="{{route('register.anggota.baga',['baga'=>'pawongan'])}}" class="btn btn-primary">Daftar BAGA</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -4,6 +4,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if (session('message'))
+                <section>
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                </section>
+            @endif
             <div class="card">
                 <div class="card-header">{{ __('DAFTAR ANGGOTA PAWISA') }}</div>
 

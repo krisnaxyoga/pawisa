@@ -237,7 +237,11 @@ class AdminController extends Controller
     public function cetak(Request $request){
 
         // dd($request->date);
-        $data = Anggota::whereDate('created_at',$request->date)->where('baga',$request->type)->get();
+        if(!$request->date && $request->type){
+            $data = Anggota::all();
+        }else{
+            $data = Anggota::whereDate('created_at',$request->date)->where('baga',$request->type)->get();
+        }
         // dd($data);
         return view('contents.admin.cetak',compact('data'));
     }
