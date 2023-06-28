@@ -244,7 +244,10 @@
 
       <section id="rapat">
         <div class="container reveal fade-top" style="padding-top: 90px;">
-          <h4><b>Rapat</b></h4>
+          <h4>@if(count($rapat))
+            <b>Rapat</b>
+          @endif
+            </h4>
           <div class="row justify-content-center" style="padding-top: 20px;">
 
             @foreach ($rapat as $item)
